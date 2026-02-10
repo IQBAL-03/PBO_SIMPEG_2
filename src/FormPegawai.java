@@ -31,7 +31,7 @@ public class FormPegawai extends javax.swing.JFrame {
     tableModel.addColumn("USIA");
 
     try {
-        sql = "SELECT * FROM tabel_pegawai";
+        sql = "SELECT * FROM tabel_pegawai order by id_pegawai asc";
         rs = stm.executeQuery(sql);
         while (rs.next()) {
             tableModel.addRow(new Object[]{

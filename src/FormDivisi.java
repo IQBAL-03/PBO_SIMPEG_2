@@ -28,7 +28,7 @@ public class FormDivisi extends javax.swing.JFrame {
     tableModel.addColumn("HONOR JABATAN");
 
     try {
-        sql = "SELECT * FROM tabel_divisi";
+        sql = "SELECT * FROM tabel_divisi order by id_divisi asc";
         rs = stm.executeQuery(sql);
         while (rs.next()) {
             tableModel.addRow(new Object[]{

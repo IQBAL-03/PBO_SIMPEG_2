@@ -32,7 +32,7 @@ public class FormJabatan extends javax.swing.JFrame {
     tableModel.addColumn("PERJALANAN DINAS");
 
     try {
-        sql = "SELECT * FROM tabel_jabatan";
+        sql = "SELECT * FROM tabel_jabatan ORDER BY id_jabatan ASC";
         rs = stm.executeQuery(sql);
         while (rs.next()) {
             tableModel.addRow(new Object[]{
@@ -91,7 +91,7 @@ public class FormJabatan extends javax.swing.JFrame {
 
         jLabel1.setText("ID JABATAN");
 
-        jLabel2.setText("JABATAN");
+        jLabel2.setText("Nama JABATAN");
 
         jLabel3.setText("GAJI POKOK");
 

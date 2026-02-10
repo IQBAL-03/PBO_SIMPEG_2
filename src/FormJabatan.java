@@ -91,7 +91,7 @@ public class FormJabatan extends javax.swing.JFrame {
 
         jLabel1.setText("ID JABATAN");
 
-        jLabel2.setText("NAMA JABATAN");
+        jLabel2.setText("JABATAN");
 
         jLabel3.setText("GAJI POKOK");
 

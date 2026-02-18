@@ -145,7 +145,7 @@ public class FormLogin extends javax.swing.JFrame {
     }//GEN-LAST:event_txtPassActionPerformed
 
     private void btn_loginActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_loginActionPerformed
-        // TODO add your handling code here:
+         // TODO add your handling code here:
          String username = txtUser.getText().trim();
         String password = txtPass.getText().trim();
         if(username.isEmpty() || password.isEmpty()){

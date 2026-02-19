@@ -37,7 +37,7 @@ public class FormDivisi extends javax.swing.JFrame {
             }
             tabel.setModel(model);
         }catch(Exception e){
-            JOptionPane.showMessageDialog(null, "Data Ditemukan" + e.getMessage());
+            JOptionPane.showMessageDialog(null, "Data Tidak Ditemukan" + e.getMessage());
         }
     }
     
@@ -254,16 +254,16 @@ public class FormDivisi extends javax.swing.JFrame {
             JOptionPane.showMessageDialog(null, "Nggak Boleh kosong");
             return;
         }
-         try{
-            sql = "INSERT INTO tabel_divisi (id_divisi, nama_divisi, honor_divisi) VALUES (?, ?, ?)";
+        try{
+            sql = "insert into tabel_divisi (`id_divisi`, `nama_divisi`, `honor_divisi`) VALUES (?, ?, ?)";
             pstm = con.prepareStatement(sql);
-            pstm.setString(1,idiv);
-            pstm.setString(2,ndivisi);
-            pstm.setString(3,hdivisi);
+            pstm.setString(1, idiv);
+            pstm.setString(2, ndivisi);
+            pstm.setString(3, hdivisi);
             pstm.execute();
-            JOptionPane.showMessageDialog(null, "Berhasil");
+            JOptionPane.showMessageDialog(null, "Berhasil Menambahakan Data");
         }catch(Exception e){
-            JOptionPane.showMessageDialog(this, e.getMessage());
+            JOptionPane.showMessageDialog(null, "Gagal Menambahkan Data Karena " + e.getMessage());
         }
         load_table();
         kosong();
@@ -337,21 +337,22 @@ public class FormDivisi extends javax.swing.JFrame {
             return;
         }
         
-     try{
-         sql = "select * from tabel_divisi where id_divisi = ?";
-         pstm = con.prepareStatement(sql);
-         pstm.setString(1, idiv);
-         rs = pstm.executeQuery();
-         if(rs.next()){
-             divisi.setText(rs.getString("nama_divisi"));
-             honor.setText(rs.getString("honor_divisi"));
-         }else{
-             JOptionPane.showMessageDialog(null, "Data Tidak Ditemukan");
-             kosong();
-         }
-     }catch(Exception e){
-         JOptionPane.showMessageDialog(this, e.getMessage());
-     }
+    try{
+        sql = "select * from tabel_divisi where id_divisi = ?";
+        pstm = con.prepareStatement(sql);
+        pstm.setString(1, idiv);
+        rs = pstm.executeQuery();
+        if(rs.next()){
+            divisi.setText(rs.getString("nama_divisi"));
+            honor.setText(rs.getString("honor_divisi"));
+        }else{
+            JOptionPane.showMessageDialog(null, "Data Tidak Ditemukan");
+            kosong();
+        }
+    }catch(Exception e){
+        JOptionPane.showMessageDialog(this, e.getMessage());
+    }
+    load_table();
     }//GEN-LAST:event_cariActionPerformed
 
     /**

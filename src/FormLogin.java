@@ -3,20 +3,15 @@ import javax.swing.*;
 public class FormLogin extends javax.swing.JFrame {
     
     private static final java.util.logging.Logger logger = java.util.logging.Logger.getLogger(FormLogin.class.getName());
-
-     Connection con;
-   // Statement stm;
+    Connection con;
     PreparedStatement pstm;
     ResultSet rs;
     String sql;
-    
     public FormLogin() {
         initComponents();
         koneksi DBS = new koneksi();
         DBS.config();
         con = DBS.con;
-        //stm = DBS.stm;
-        
     }
 
     /**
@@ -146,28 +141,28 @@ public class FormLogin extends javax.swing.JFrame {
 
     private void btn_loginActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_loginActionPerformed
          // TODO add your handling code here:
-         String username = txtUser.getText().trim();
-        String password = txtPass.getText().trim();
-        if(username.isEmpty() || password.isEmpty()){
-            JOptionPane.showMessageDialog(null, "username dan Password jangan kosong");
-            return;
-        }
-        try{
-            sql = "SELECT id, username FROM tabel_admin WHERE username = ? AND password = ?";
-            pstm = con.prepareStatement(sql);
-            pstm.setString(1, username);
-            pstm.setString(2, password);
-            rs = pstm.executeQuery();
-           if(rs.next()){
-                JOptionPane.showMessageDialog(null, "BERHASIL LOGIN");
-                this.dispose();
-                new FormMenu().setVisible(true);          
-        }else{
-            JOptionPane.showMessageDialog(null, "username atau password salah");
-        }
-        } catch (Exception e) {
-            JOptionPane.showMessageDialog(this, e.getMessage());
-        }
+         String user = txtUser.getText().trim();
+         String pass = txtPass.getText().trim();
+         if(user.isEmpty() || pass.isEmpty()){
+             JOptionPane.showMessageDialog(this, "Jangan Kosong");
+             return;
+         }
+         try{
+             sql = "select id, username from tabel_admin where username = ? and password =  ?";
+             pstm = con.prepareStatement(sql);
+             pstm.setString(1, user);
+             pstm.setString(2, pass);
+             rs = pstm.executeQuery();
+             if(rs.next()){
+                 JOptionPane.showMessageDialog(this, "Berhasil");
+                 this.dispose();
+                 new FormMenu().setVisible(true);
+             }else{
+                 JOptionPane.showMessageDialog(this, "Salah");
+             }
+         }catch(Exception e){
+             JOptionPane.showMessageDialog(null, e.getMessage());
+         }
     }//GEN-LAST:event_btn_loginActionPerformed
 
     private void btn_closeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_closeActionPerformed

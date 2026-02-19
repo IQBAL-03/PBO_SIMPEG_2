@@ -321,11 +321,12 @@ public class FormDivisi extends javax.swing.JFrame {
 
     private void tabelMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tabelMouseClicked
         // TODO add your handling code here:
-         int row = tabel.rowAtPoint(evt.getPoint());
-        id.setText(tabel.getValueAt(row, 0).toString());
-        divisi.setText(tabel.getValueAt(row, 1).toString());
-        honor.setText(tabel.getValueAt(row, 2).toString());
-        
+        int row = tabel.getSelectedRow();
+        if (row != -1){
+            id.setText(tabel.getValueAt(row, 0).toString());
+            divisi.setText(tabel.getValueAt(row, 1).toString());
+            honor.setText(tabel.getValueAt(row, 2).toString());
+        }
     }//GEN-LAST:event_tabelMouseClicked
 
     private void cariActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cariActionPerformed

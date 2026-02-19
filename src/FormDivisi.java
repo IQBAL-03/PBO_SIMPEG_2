@@ -1,5 +1,4 @@
 import java.sql.*;
-import java.util.logging.*;
 import javax.swing.*;
 import javax.swing.table.*;
 public class FormDivisi extends javax.swing.JFrame {
@@ -9,7 +8,7 @@ public class FormDivisi extends javax.swing.JFrame {
     Connection con;
     Statement stm;
     PreparedStatement pstm;
-    ResultSet  rs;
+    ResultSet rs;
     String sql;
     public FormDivisi() {
         initComponents();
@@ -21,32 +20,33 @@ public class FormDivisi extends javax.swing.JFrame {
         kosong();
     }
 
-     private void load_table() {
-    DefaultTableModel tableModel = new DefaultTableModel();
-    tableModel.addColumn("ID DIVISI");
-    tableModel.addColumn("NAMA DIVISI");
-    tableModel.addColumn("HONOR JABATAN");
-
-    try {
-        sql = "SELECT * FROM tabel_divisi order by id_divisi asc";
-        rs = stm.executeQuery(sql);
-        while (rs.next()) {
-            tableModel.addRow(new Object[]{
-                rs.getString(1),
-                rs.getString(2),
-                rs.getString(3),
-            });
+    private void load_table(){
+        DefaultTableModel table = new DefaultTableModel();
+        table.addColumn("Id Divisi");
+        table.addColumn("Nama Divisi");
+        table.addColumn("Honor Divisi");
+        try{
+            sql = "select * from tabel_divisi order by id_divisi asc";
+            rs = stm.executeQuery(sql);
+            while(rs.next()){
+                table.addRow(new Object[]{
+                    rs.getString(1),
+                    rs.getString(2),
+                    rs.getString(3)
+                });
+            }
+            tabel.setModel(table);
+        }catch(Exception e){
+            JOptionPane.showMessageDialog(null, "Data Tidak Ditemukan" + e.getMessage());
         }
-        tabel.setModel(tableModel);
-    } catch (SQLException e) {
-        JOptionPane.showMessageDialog(null, "Error: " + e.getMessage());
     }
-}
-    private void kosong() {
-    id.setText(null);
-    divisi.setText(null);
-    honor.setText(null);
-}
+    
+    private void kosong(){
+        id.setText(null);
+        divisi.setText(null);
+        honor.setText(null);
+    }
+    
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
@@ -322,7 +322,7 @@ public class FormDivisi extends javax.swing.JFrame {
     private void tabelMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tabelMouseClicked
         // TODO add your handling code here:
         int row = tabel.getSelectedRow();
-        if (row != -1){
+        if(row != -1){
             id.setText(tabel.getValueAt(row, 0).toString());
             divisi.setText(tabel.getValueAt(row, 1).toString());
             honor.setText(tabel.getValueAt(row, 2).toString());

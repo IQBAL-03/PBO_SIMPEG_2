@@ -153,7 +153,7 @@ public class FormLogin extends javax.swing.JFrame {
             return;
         }
         try{
-            sql = "SELECT * FROM tabel_admin WHERE username = ? AND password = ?";
+            sql = "SELECT id, username FROM tabel_admin WHERE username = ? AND password = ?";
             pstm = con.prepareStatement(sql);
             pstm.setString(1, username);
             pstm.setString(2, password);

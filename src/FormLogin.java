@@ -144,7 +144,7 @@ public class FormLogin extends javax.swing.JFrame {
          String user = txtUser.getText().trim();
          String pass = txtPass.getText().trim();
          if(user.isEmpty() || pass.isEmpty()){
-             JOptionPane.showMessageDialog(this, "Jangan Kosong");
+             JOptionPane.showMessageDialog(this, "Username Atau Password Jangan Kosong");
              return;
          }
          try{
@@ -154,11 +154,11 @@ public class FormLogin extends javax.swing.JFrame {
              pstm.setString(2, pass);
              rs = pstm.executeQuery();
              if(rs.next()){
-                 JOptionPane.showMessageDialog(this, "Berhasil");
+                 JOptionPane.showMessageDialog(this, "Berhasil Login");
                  this.dispose();
                  new FormMenu().setVisible(true);
              }else{
-                 JOptionPane.showMessageDialog(this, "Salah");
+                 JOptionPane.showMessageDialog(this, "Username Atau Password Salah");
              }
          }catch(Exception e){
              JOptionPane.showMessageDialog(null, e.getMessage());

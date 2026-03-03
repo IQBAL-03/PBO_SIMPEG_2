@@ -1,12 +1,3 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
- */
-
-/**
- *
- * @author VICTUS
- */
 public class FormMenu extends javax.swing.JFrame {
     
     private static final java.util.logging.Logger logger = java.util.logging.Logger.getLogger(FormMenu.class.getName());
@@ -16,8 +7,44 @@ public class FormMenu extends javax.swing.JFrame {
      */
     public FormMenu() {
         initComponents();
+        //styleComponents();
     }
 
+   /* private void styleComponents() {
+        // Colors
+        java.awt.Color lightBlue = new java.awt.Color(227, 242, 253);
+        java.awt.Color oceanBlue = new java.awt.Color(25, 118, 210);
+        java.awt.Color deepBlue = new java.awt.Color(13, 71, 161);
+        java.awt.Color white = java.awt.Color.WHITE;
+
+        // Panel Background
+        jPanel1.setBackground(lightBlue);
+
+        // Header Label
+        jLabel1.setForeground(deepBlue);
+        jLabel1.setFont(new java.awt.Font("Segoe UI", 1, 24));
+
+        // Menu Bar styling
+        jMenuBar1.setBackground(lightBlue); // Match panel background
+        jMenuBar1.setBorder(javax.swing.BorderFactory.createMatteBorder(0, 0, 2, 0, oceanBlue)); // Blue bottom border
+        
+        // Menu Styling
+        for (int i = 0; i < jMenuBar1.getMenuCount(); i++) {
+            javax.swing.JMenu menu = jMenuBar1.getMenu(i);
+            menu.setForeground(deepBlue); // Deep blue text for visibility
+            menu.setFont(new java.awt.Font("Segoe UI", 1, 14));
+            
+            for (int j = 0; j < menu.getItemCount(); j++) {
+                javax.swing.JMenuItem item = menu.getItem(j);
+                if (item != null) {
+                    item.setBackground(white);
+                    item.setForeground(deepBlue);
+                    item.setFont(new java.awt.Font("Segoe UI", 0, 13));
+                }
+            }
+        }
+    }
+*/
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -33,10 +60,10 @@ public class FormMenu extends javax.swing.JFrame {
         jMenuBar1 = new javax.swing.JMenuBar();
         jMenu1 = new javax.swing.JMenu();
         jMenuItem2 = new javax.swing.JMenuItem();
-        jMenu2 = new javax.swing.JMenu();
-        jMenuItem3 = new javax.swing.JMenuItem();
         jMenu5 = new javax.swing.JMenu();
         jMenuItem6 = new javax.swing.JMenuItem();
+        jMenu2 = new javax.swing.JMenu();
+        jMenuItem3 = new javax.swing.JMenuItem();
         jMenu3 = new javax.swing.JMenu();
         jMenuItem4 = new javax.swing.JMenuItem();
         jMenuItem5 = new javax.swing.JMenuItem();
@@ -45,6 +72,8 @@ public class FormMenu extends javax.swing.JFrame {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("Form Menu");
+
+        jPanel1.setBackground(new java.awt.Color(204, 255, 255));
 
         jLabel1.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
         jLabel1.setText("Pilih Menu Untuk Pindah Halaman");
@@ -63,7 +92,7 @@ public class FormMenu extends javax.swing.JFrame {
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addGap(165, 165, 165)
                 .addComponent(jLabel1)
-                .addContainerGap(525, Short.MAX_VALUE))
+                .addContainerGap(1140, Short.MAX_VALUE))
         );
 
         jMenu1.setText("Divisi");
@@ -78,18 +107,6 @@ public class FormMenu extends javax.swing.JFrame {
 
         jMenuBar1.add(jMenu1);
 
-        jMenu2.setText("Pegawai");
-
-        jMenuItem3.setText("From Pegawai");
-        jMenuItem3.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jMenuItem3ActionPerformed(evt);
-            }
-        });
-        jMenu2.add(jMenuItem3);
-
-        jMenuBar1.add(jMenu2);
-
         jMenu5.setText("Jabatan");
 
         jMenuItem6.setText("Form Jabatan");
@@ -101,6 +118,18 @@ public class FormMenu extends javax.swing.JFrame {
         jMenu5.add(jMenuItem6);
 
         jMenuBar1.add(jMenu5);
+
+        jMenu2.setText("Pegawai");
+
+        jMenuItem3.setText("From Pegawai");
+        jMenuItem3.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuItem3ActionPerformed(evt);
+            }
+        });
+        jMenu2.add(jMenuItem3);
+
+        jMenuBar1.add(jMenu2);
 
         jMenu3.setText("Keluar");
 

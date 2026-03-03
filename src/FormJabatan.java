@@ -1,5 +1,4 @@
 import java.sql.*;
-import java.util.logging.*;
 import javax.swing.*;
 import javax.swing.table.*;
 public class FormJabatan extends javax.swing.JFrame {
@@ -13,6 +12,7 @@ public class FormJabatan extends javax.swing.JFrame {
     String sql;
     public FormJabatan() {
         initComponents();
+       // styleComponents();
         koneksi DBS = new koneksi();
         DBS.config();
         con = DBS.con;
@@ -21,6 +21,51 @@ public class FormJabatan extends javax.swing.JFrame {
         kosong();
     }
 
+    /*private void styleComponents() {
+        // Colors
+        java.awt.Color lightBlue = new java.awt.Color(227, 242, 253);
+        java.awt.Color oceanBlue = new java.awt.Color(25, 118, 210);
+        java.awt.Color deepBlue = new java.awt.Color(13, 71, 161);
+        java.awt.Color white = java.awt.Color.WHITE;
+
+        // Panel Background
+        jPanel1.setBackground(lightBlue);
+
+        // Labels styling
+        javax.swing.JLabel[] labels = {jLabel1, jLabel2, jLabel3, jLabel4, jLabel5, jLabel6, jLabel7};
+        for (javax.swing.JLabel label : labels) {
+            label.setForeground(deepBlue);
+            label.setFont(new java.awt.Font("Segoe UI", 1, 12));
+        }
+
+        // Buttons styling
+        javax.swing.JButton[] buttons = {tambah, update, hapus, keluar, cari};
+        for (javax.swing.JButton btn : buttons) {
+            btn.setBackground(oceanBlue);
+            btn.setForeground(white);
+            btn.setFocusPainted(false);
+            btn.setBorder(javax.swing.BorderFactory.createEmptyBorder(5, 15, 5, 15));
+        }
+        keluar.setBackground(new java.awt.Color(211, 47, 47)); // Red for exit
+
+        // Table styling
+        tabel.getTableHeader().setBackground(oceanBlue);
+        tabel.getTableHeader().setForeground(white);
+        tabel.getTableHeader().setFont(new java.awt.Font("Segoe UI", 1, 12));
+        tabel.setSelectionBackground(new java.awt.Color(187, 222, 251));
+        tabel.setSelectionForeground(deepBlue);
+        tabel.setRowHeight(25);
+
+        // TextFields
+        javax.swing.JTextField[] fields = {jabatan, njabatan, pokok, tunjangan, anak, kesehatan, dinas};
+        for (javax.swing.JTextField field : fields) {
+            field.setBorder(javax.swing.BorderFactory.createCompoundBorder(
+                javax.swing.BorderFactory.createLineBorder(oceanBlue, 1),
+                javax.swing.BorderFactory.createEmptyBorder(2, 5, 2, 5)
+            ));
+        }
+    }
+*/
     private void load_table() {
     DefaultTableModel tableModel = new DefaultTableModel();
     tableModel.addColumn("ID JABATAN");
@@ -88,6 +133,8 @@ public class FormJabatan extends javax.swing.JFrame {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("Form Jabatan");
+
+        jPanel1.setBackground(new java.awt.Color(204, 255, 255));
 
         jLabel1.setText("ID JABATAN");
 
@@ -235,7 +282,7 @@ public class FormJabatan extends javax.swing.JFrame {
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                                 .addComponent(cari))))
                     .addComponent(jScrollPane1))
-                .addContainerGap(22, Short.MAX_VALUE))
+                .addContainerGap(24, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -351,7 +398,7 @@ public class FormJabatan extends javax.swing.JFrame {
                 kesehatan.setText(rs.getString("tunj_kesehatan"));
                 dinas.setText(rs.getString("perj_dinas"));
             }else{
-                JOptionPane.showMessageDialog(null, "Data Ra ketemu");
+                JOptionPane.showMessageDialog(null, "Data nggak ketemu");
                 kosong();
             }
         }catch(Exception e){
@@ -452,14 +499,16 @@ public class FormJabatan extends javax.swing.JFrame {
 
     private void tabelMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tabelMouseClicked
         // TODO add your handling code here:
-        int row = tabel.rowAtPoint(evt.getPoint());
-        jabatan.setText(tabel.getValueAt(row, 0).toString());
-        njabatan.setText(tabel.getValueAt(row, 1).toString());
-        pokok.setText(tabel.getValueAt(row, 2).toString());
-        tunjangan.setText(tabel.getValueAt(row, 3).toString());
-        anak.setText(tabel.getValueAt(row, 4).toString());
-        kesehatan.setText(tabel.getValueAt(row, 5).toString());
-        dinas.setText(tabel.getValueAt(row, 6).toString());
+       int row = tabel.getSelectedRow();
+       if (row != -1){
+           jabatan.setText(tabel.getValueAt(row, 0).toString());
+           njabatan.setText(tabel.getValueAt(row, 1).toString());
+           pokok.setText(tabel.getValueAt(row, 2).toString());
+           tunjangan.setText(tabel.getValueAt(row, 3).toString());
+           anak.setText(tabel.getValueAt(row, 4).toString());
+           kesehatan.setText(tabel.getValueAt(row, 5).toString());
+           dinas.setText(tabel.getValueAt(row, 6).toString());
+       }
     }//GEN-LAST:event_tabelMouseClicked
 
     /**

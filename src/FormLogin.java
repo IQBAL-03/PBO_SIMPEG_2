@@ -9,11 +9,52 @@ public class FormLogin extends javax.swing.JFrame {
     String sql;
     public FormLogin() {
         initComponents();
+       // styleComponents();
         koneksi DBS = new koneksi();
         DBS.config();
         con = DBS.con;
     }
 
+   /* private void styleComponents() {
+        // Colors
+        java.awt.Color lightBlue = new java.awt.Color(227, 242, 253);
+        java.awt.Color oceanBlue = new java.awt.Color(25, 118, 210);
+        java.awt.Color deepBlue = new java.awt.Color(13, 71, 161);
+        java.awt.Color white = java.awt.Color.WHITE;
+
+        // Panel Background
+        jPanel1.setBackground(lightBlue);
+
+        // Header Label
+        jLabel3.setForeground(deepBlue);
+        jLabel3.setFont(new java.awt.Font("Segoe UI", 1, 24));
+
+        // Regular Labels
+        jLabel1.setForeground(deepBlue);
+        jLabel2.setForeground(deepBlue);
+
+        // Buttons
+        btn_login.setBackground(oceanBlue);
+        btn_login.setForeground(white);
+        btn_login.setFocusPainted(false);
+        btn_login.setBorder(BorderFactory.createEmptyBorder(10, 20, 10, 20));
+
+        btn_close.setBackground(new java.awt.Color(211, 47, 47)); // Red for close
+        btn_close.setForeground(white);
+        btn_close.setFocusPainted(false);
+        btn_close.setBorder(BorderFactory.createEmptyBorder(10, 20, 10, 20));
+        
+        // TextFields
+        txtUser.setBorder(javax.swing.BorderFactory.createCompoundBorder(
+            javax.swing.BorderFactory.createLineBorder(oceanBlue, 1),
+            javax.swing.BorderFactory.createEmptyBorder(5, 10, 5, 10)
+        ));
+        txtPass.setBorder(javax.swing.BorderFactory.createCompoundBorder(
+            javax.swing.BorderFactory.createLineBorder(oceanBlue, 1),
+            javax.swing.BorderFactory.createEmptyBorder(5, 10, 5, 10)
+        ));
+    }
+*/
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -34,6 +75,8 @@ public class FormLogin extends javax.swing.JFrame {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("Form Login");
+
+        jPanel1.setBackground(new java.awt.Color(204, 255, 255));
 
         jLabel1.setText("Username");
 

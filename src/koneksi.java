@@ -6,6 +6,7 @@ public class koneksi {
     public void config(){
         try{
            // Class.forName("com.mysql.jdbc.Driver");
+           // con = DriverManager.getConnection("jdbc:mysql://localhost/dbpegawai","root","");
             con = config.configDB();
             stm = con.createStatement();
         }catch(Exception e){
